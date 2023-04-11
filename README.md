@@ -11,6 +11,126 @@
 > 매주 화요일 오전 10시
 
 ---
+# Chapter 5
+## 변수와 자료형 - 변수
+- 정수형 변수 : int num
+- 실수형 변수 : double width
+- 참조형 변수 : String content
+
+### [변수 규칙]
+ 1. 1개의 변수 -> 1개의 값만 할당 가능
+ 2. 변수에 저장된 값 -> 재할당을 통해 변경 가능
+ 3. 값의 형태에 맞는 자료형을 사용
+ 4. 변수명은 소문자로 시작
+ 5. 대소문자 구분, 공백 포함 불가능
+ 6. 자바 예약어 사용 불가 {ex) int int = 1, int double = 1…}
+ 
+## 변수와 자료형 - 기본형
+> [정수형]
+ 1. byte (1 byte = 8 bits)
+ 2. short (2 bytes)
+ 3. int (4 bytes)
+ 4. long (8 bytes)
+ >  [실수형]
+ 1. double (8 bytes)
+ 2. float (4 bytes)
+ > [문자형]
+ 1. char (2 bytes)
+ 2. 아스키코드
+ 3. 유니코드
+ > [논리형]
+ 1. boolean (1 byte) : 1과 0은 사용 불가능
+ 
+ ## <변수와 자료형 - 참조형>
+- 참조형 데이터의 값 : '힙 메모리 영역'에 생성
+- 변수에 대입되는 값 : '힙 메모리 영역의 주소값'
+ ex) String a = new String(origianl:"Hello!"); : new를 적음으로서 무조건 새로운 주소를 만들어 줌
+
+ ## <변수와 자료형 - 상수>
+  - 상수(constants, final variables) : 한 번 값이 할당하면 재할당 불가능
+  - final : 고정적으로 사용해야 하는 값을 프로그램 상단에 상수로 선언해서 사용하기
+  
+ ## <변수와 자료형 - 형변환>
+ byte < short < int < long <<< float < double
+ ```java
+ ex 1)  
+ int a = 128;
+ short b = a;
+ System.out.println(b); //  에러남 (int가 short보다 더 크기 때문에)
+ ex 2)
+ byte c= 128;
+ System.out.println(c); // 에러남 (byte 범위 안에 들어가지 못하므로 가장 작은 값으로 출력)
+ ```
+  - 나타낼 수 있는 범위가 다른 것끼리 계산하면 (뭐)를 (뭐)로 바꾼 다고 선언해야 함
+  - (short), (e+f) …
+ 
+ 
+ ex 1) 
+ ```java
+ int d = 10;
+ short e = 20;
+ short f = (short) (e+f);
+ System.out.println(g); : 30
+```
+
+## <변수와 자료형 - String>
+### 문자열 객체(객체 : 힙 메모리 영역, 변수 : 힙 메모리 영역의 주소)
+  - str 문자열 객체와 비교 대상의 내용이 같은 지 참 거짓 결정 
+  - 값 비교할 때 등호 사용 대한 equals 사용
+  ```java 
+  if (str.equals(str_2)) {
+	System.out.println(“str.equals(str_2)”);
+  }
+  ```
+  - 비교해서 참인지 거짓인지 판단한 것이 결과 값
+
+--- 
+
+## <문자열 병합>
+1. '+' 연산자
+```java
+  String str_1 = “Hello, ”;
+  String str_2 = “World!”;
+  System.out.println(str_1 + “ ” + str_2);
+```
+>결과값 : Hello, World!
+
+2. StringBuilder
+ - 임시 객체를 만들지 않고 Hello World 생성 가능
+ - 속도 빠르고 메모리 효율적
+ - String : 수정 불가능, Builder : 수정 가능
+ 
+## <문자열 슬라이스>
+```java
+ex)          //   0 123 4 56
+String str_1 = "이름: 김자바";
+String str_name = str_1.substring(4, 7);  // (0, 0)의 앞은 시작 숫자, 뒤는 끝나는 숫자 뒷 숫자
+System.out.println(str_name);
+```
+> 결과값 : 김자바
+
+## <문자열 대소문자 변환>
+ - 대문자와 소문자 구분
+ - equlasIgnoreCase : 대소문자를 무시하고 값을 비교함
+
+## <공백 제거>
+1. 양쪽 끝 공백  
+ - trim : 양쪽 끝 공백만 제거 가능
+2. 문자열 중간 공백
+ - replace(어떤 문자를 어떤 문자로 치환) : 양쪽 끝 공백 뿐만이 아닌 중간 공백이 다 사라짐
+
+## <변수와 자료형 - 콘솔 입출력>
+```java
+Scanner sc = new Scanner(Ststem.in);
+    System.out.println(“아이디를 입력해주세요. >>”);
+String username = sc.nextLine();
+    System.out.println(“생년월일을 입력해주세요. >>”);
+int birthDate = sc.nextLine();
+    System.out.printf(“%s %d”, username, birthDate);
+// %s : username, %d : birthdate, print(ln) : ln 안 적으면 바로바로 입력 가능, \n : 다음 줄에 입력, \t : spacebar
+```
+
+---
 
 # Chapter 8
   ## 배열
