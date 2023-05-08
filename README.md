@@ -411,6 +411,173 @@ public static void main(String[] args){
 > 매개변수는 ‘Parameter’라고 하며 메서드에 전달된 값을 저장하는 변수를 말한다.
 > 인수는 ‘Arguments’라고 하며 메서드에 전달하는 값을 말한다.
 
+# Chapter9 (서영)
+## 함수(method)
+ - 어떠한 값이 넘겨지거나 아무 값도 넘겨지지 않았을 때
+ - 작업을 수행한 후 
+ - 반환하거나 혹은 반환하지 않고 종료
+
+1. 입력 O, 출력(반환) O
+```java
+int mod (int a, int b) {           // int와 
+    int result = a % b;
+    return result; // 반환해서 사용   // 의 result의 형태가 같아야 함
+}
+```
+
+2. 입력 O, 출력(반환) X
+```java
+void printNum (int a) {
+    System.out.println(a); // 콘솔에 출력 O, 메모리에 저장 X
+}
+```
+
+3. 입력 X, 출력(반환) O
+```java
+String greeting() {    // 입력값이 없으므로 ()안에 아무것도 안넣음
+    return "Hello!";   // return으로 반환은 함
+}
+```
+
+4. 입력 X, 출력(반환) X
+```java
+void greeting_2() {               // 입력 X
+    System.out.println("Hello!")  // 출력만하고 데이터 휘발
+}
+```
+예시 1
+```java
+public static void main(String[] args) {
+    int mod_result = mod(3, 2);    // mod : 나머지 구하는 연산자
+    System.out.println(mod_result);
+}
+```
+-> 1
+
+예시 2
+```java
+public static void main(String[] args) {
+    String str = greeitng();
+    System.out.println(str);
+}
+```
+-> Hello!
+
+## 함수 - 자료 구조 형태
+```java
+public static void main(String[] args) {
+    static void printListElements(ArrayList list) {
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i));
+            }
+    }
+}
+```
+--> 불필요한 반복 작업, 조건문이 길어질 때 -> 함수로 구현
+
+```java
+public static void main(String[] args) {
+    ArrayList list_1 = new ArrayList<>;
+    list_1.add(10);
+    list_1.add(100);
+
+    printListElements(list_1);
+}
+```
+-> 10, 100
+
+# Chapter 11
+## 객체지향 프로그래밍
+- 객체지향 프로그래밍 참고 사이트
+> https://jongminfire.dev/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%9D%B4%EB%9E%80
+
+## 클래스
+> 객체 지향 프로그래밍의 추상화 개념 구현
+> 클래스는 속성 나타내는 멤버(member), 기능을 표현하는 메소드(method)
+```java
+public class BankAccount{
+  // 멤버변수
+  int bankCode;
+  int accountNo;
+  String owner;
+  int balance;
+  boolean isDormant;
+  int password;
+
+  // 메소드
+  void inquiry(){} // 잔액 조회
+  void deposit(){} // 계좌 입금
+  void withdraw(){} // 계좌 출금
+}
+```
+
+
+## 접근제어자
+![image](https://user-images.githubusercontent.com/101550897/236931578-327a1f6f-8afa-46fb-9f97-ade1e03cfeca.png)
+
+- public
+> 패키지, 클래스 제한이 없음
+
+- private
+> 같은 클래스에서만 접근 가능 
+
+- protected
+> 같은 패키지에서만 접근이 가능 
+
+- default
+> 같은 패키지, 해당 클래스를 상속 받은 다른 패키지의 자손 클래스에서 접근 가능. 
+> 접근제어자를 설정하지 않았을 때 값이 default로 설정 
+
+## 상속
+```java
+  public class Person {
+    private String name;
+    private int age;
+  }
+
+  public class Student extends Person{
+    private String 
+  }
+  public class Professor extends Pers on{
+    ...
+  }
+  
+```
+### Overloading
+> 부모 클래스에서 상속받은 메서드에서 파라미터를 변경
+ 1. 매개변수의 개수가 달라야함
+ 2. 매개변수의 타입이 달라야함 
+```java
+  void inquiry(double currencyRate)
+  void inquiry(int currencyRate)
+  void inquiry(int i_currencyRate, double d_currencyRate)
+
+```
+### Overriding
+> 부모 클래스에서 상속받은 메서드의 내용을 재정의
+```java
+  public class BankAccount{
+    ...
+  // 메소드
+  void inquiry(){} // 잔액 조회
+  void deposit(){} // 계좌 입금
+  void withdraw(){} // 계좌 출금
+}
+public class DollorAccount{
+    ...
+  // 메소드
+  void inquiry(){
+    System.out.println("계좌 출금")
+  }
+}
+```
+
+>>오른쪽 마우스 -> Generater -> Getter/Setter -> private 멤버 변수 접근 함수 생성 가능
+![getter_setter](https://user-images.githubusercontent.com/101550897/236928509-727bce03-b083-448c-9959-36f4a273cf38.png)
+
+
+
+---
 # Chapter 12
 ## 예외 처리
 - 예외(Exception): 코드 실행 단계에서 발생하는 예상할 수 있는 에러
@@ -441,7 +608,6 @@ finally{
 
 ---
 # Chapter 13
-
 ## 클라이언트와 서버의 만남
 ### Web의 등장
 
