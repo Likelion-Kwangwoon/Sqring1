@@ -486,6 +486,124 @@ public static void main(String[] args) {
 ```
 -> 10, 100
 
+---
+# Chapter 10
+
+## 실습 - 회원가입 프로그램
+### 회원가입 처음
+```java
+public static void main(String[] args) {
+        System.out.println("=============");
+        System.out.println("회원등록");
+        System.out.println("=============");  // 프로그램 제목을 나타내는 것을 꾸며줌
+
+        boolean register = false;
+        Scanner sc = new Scanner(System.in);
+
+        while(!register) {  // !register : true
+            System.out.println("회원가입을 하시겠습니까?\ny : 진행  N : 취소");
+            System.out.print(">> ");  // 문자를 계행하지 않고 사용자가 입력한 문자 그대로를 출력하게 함(ln지우기).
+            String register_input = sc.nextLine(); // (scanner)우리가 만들었던 객체에서 nextLine 함수를 통해서 사용자의 입력을 받음. -> 대기
+            if (register_input.equalsIgnoreCase("y")) {   
+                register = true;  // !register가 false이므로 while문 반복
+                System.out.println("=============");
+                System.out.println("회원가입이 진행됩니다.");
+                System.out.println("=============");
+            } else if (register_input.equalsIgnoreCase("n")) {
+                System.out.println("=============");
+                System.out.println("회원가입이 종료됩니다.");
+                System.out.println("=============");
+                System.exit(0);  // 0 : 정상 종료
+            } else {
+                System.out.println("입력값을 확인해주세요."); // y, n 이외에 다른 값을 입력했을 때
+            }
+        }
+
+        }
+```
+
+### 회원가입 중 ID, PW, 이름, 생년월일, 이메일 생성
+```java
+    ArrayList users = new ArrayList();
+        
+        while (true) {     
+                HashMap user = HashMap(); // HashMap : 한명의 user을 담을 때 사용 
+            //ID
+            System.out.print("ID :  ");
+            String username = sc.nextLine();
+            //PW
+            String password = "";
+            while (true) {  
+                System.outprint("PW:  ");
+                pasword = sc.nextLine();
+                System.out.print("PW 확인 :  ");
+                String password_confirm = sc.nextLine();
+
+                if (password.equals(password_confirm)) {
+                    break;
+                } else {
+                    System.out.println("=============");
+                    System.out.println("패스워드가 일치하지 않습니다.");
+                    System.out.println("패스워드를 다시 입력해주세요.");
+                    System.out.println("=============");
+                }
+            }
+
+            //이름
+            System.out.print("성명 :  ");
+            String name = sc.nextLine();
+
+            //생년월일(6자리)
+            String birth_date = "";
+            while (true) {
+                System.out.print("생년월일(6자리) :  ");
+                birth_date = sc.nextLine();
+                if(birth_date.length()==6) {
+                    break;
+                } else {
+                    System.out.println("=============");
+                    System.out.println("생년월일 자릿수가 올바르지 않습니다.");
+                    System.out.println("생년월일을 다시 입력해주세요.");
+                    System.out.println("=============");
+                }
+            }
+
+            //이메일
+            System.out.print("이메일 :  ");
+            String email = sc.nextLine(); 
+        }
+            
+```
+
+### 회원가입 마지막
+```java
+ ArrayList users = new ArrayList();
+
+        user.put("username", username);
+        user.put("password", password);
+        user.put("nave", name);
+        user.put("birth_date", birth_date);
+        user.put("email", email);
+
+        user.add(user);
+
+        System.out.println("------------------");
+        System.out.println(user.get("name" + "님, 가입을 환영합니다"));
+        System.out.println("ID는 "user.get("username") + "입니다.");
+        System.out.println("------------------");
+
+        System.out.println("회원가입을 이어서 진행하시겠습니까?\ny : 진행  N : 취소");
+        System.out.print(">> ");  
+        String register_again = sc.nextLine();
+
+        if (register_again.equlasIgnorecase("y")) {
+            ;
+        } else if (register_again.equalsIgnoreCase("n")) {
+            System.exit(0);
+        }
+```
+---
+
 # Chapter 11
 ## 객체지향 프로그래밍
 - 객체지향 프로그래밍 참고 사이트
